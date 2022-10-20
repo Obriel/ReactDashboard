@@ -4,10 +4,13 @@ import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container';
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route,
     Link
   } from "react-router-dom";
+  import Dashboard from './Dashboard';
+  import Page1 from './Page1';
+  import Page2 from './Page2';
 
 export default class NavbarComp extends Component{
     render(){
@@ -25,17 +28,11 @@ export default class NavbarComp extends Component{
           </Navbar>
             </div>
             <div>
-            <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+            <Routes>
+            <Route path="/page1" element={<Page1/>} />
+            <Route path="/page2" element={<Page2/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
+        </Routes>
             </div>
             </Router>
         )
