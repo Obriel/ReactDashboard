@@ -1,6 +1,7 @@
 import React, {  Component, useState} from 'react'
 import "./Page1.css";
 import Dashboard from './Dashboard';
+import Page2 from './Page2';
 
 export default function Page1() {
 
@@ -26,6 +27,12 @@ function toggleActive(index){
   
 
     console.log(appState.objects[index].name);
+
+    const myArray = [appState.objects[index].name] ;
+    
+    
+
+console.log(myArray + "ffff");
     
 }
 
@@ -46,16 +53,18 @@ function toggleActiveStatus(index){
         
     } else{
         return appState.objects[index].status="";
-    }
-
-    
+    } 
 }
 
-        return(
-            <div className="Page1">
-                <h1>Page 1</h1>
 
+
+        return(
+            <div>
                 
+            <div className="Page1">
+                
+
+         
 
                 {appState.objects.map((element, index) => (
                     <div key={index} className={`${toggleActiveStatus(index)} ${toggleActiveStyles(index)}`}
@@ -63,9 +72,11 @@ function toggleActiveStatus(index){
                 ))}
 
 
-
-
+<Dashboard>
+    myArray
+</Dashboard>
             </div>
-        )
+            </div>
+        );
     
 }
