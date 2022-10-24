@@ -30,9 +30,9 @@ function toggleActive(index){
 
     const myArray = [appState.objects[index].name] ;
     
-    
+    <Dashboard arr = {myArray} />
 
-console.log(myArray + "ffff");
+console.log(myArray);
     
 }
 
@@ -72,9 +72,7 @@ function toggleActiveStatus(index){
                 ))}
 
 
-<Dashboard>
-    myArray
-</Dashboard>
+
             </div>
             </div>
         );

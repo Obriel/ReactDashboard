@@ -1,6 +1,6 @@
 .Page1 {
     display: flex;
-    height: 100vh;
+    height: 50vh;
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
@@ -14,7 +14,7 @@
 }
 
 .inactive {
-    background-color: darkgray;
+    background-color: darkgrey;
 }
 
 .active {

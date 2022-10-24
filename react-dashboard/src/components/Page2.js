@@ -4,7 +4,7 @@ import Dashboard from './Dashboard';
 
 export default function Page2(props) {
 
-  const[appState, changeState] = useState({
+  const [appState, changeState] = useState({
     objects: [{ id: 1, name: "Item1", status: "", toggled: false },
     { id: 2, name: "Item2", status: "", toggled: false },
     { id: 3, name: "Item3", status: "", toggled: false },
@@ -29,9 +29,9 @@ export default function Page2(props) {
 
     const myArray = [appState.objects[index].name];
 
+    <Dashboard arr={myArray} />
 
-
-    console.log(myArray + "ffff");
+    console.log(myArray);
 
   }
 
@@ -44,6 +44,7 @@ export default function Page2(props) {
       return "box inactive";
     }
   }
+
 
 
   function toggleActiveStatus(index) {
@@ -71,9 +72,7 @@ export default function Page2(props) {
         ))}
 
 
-        <Dashboard>
-          myArray
-        </Dashboard>
+
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function Dashboard(props) {
             <h1>Dashboard</h1>
 
            {/* <Page1/> */}
-           {props.children}
+           {props.arr}
             
         </div>
     );
