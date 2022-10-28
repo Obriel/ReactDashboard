@@ -27,6 +27,7 @@ function toggleActive(index){
   
 
     console.log(appState.objects[index].name);
+    console.log(arrayCopy.length);
 
     const myArray = [appState.objects[index].name] ;
     
