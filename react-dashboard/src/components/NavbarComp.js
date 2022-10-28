@@ -16,6 +16,7 @@ import {
 export default function NavbarComp() {
 
   const [dashboard, setDashboard] = useState([]);
+  const [page, setPage] = useState('items');
 
   const [items] = useState([
     { id: 1, name: "Item1", status: "", toggled: false },
@@ -27,7 +28,14 @@ export default function NavbarComp() {
 
 
 const pinToDashboard = (item) => {
-  setDashboard([...dashboard, item]);
+  setDashboard([...dashboard, { ...item }]);
+};
+
+
+const unpinFromDashboard = (itemToRemove) => {
+  setDashboard(
+    dashboard.filter((item) => item !== itemToRemove)
+    );
 };
 
 
