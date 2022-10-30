@@ -3,7 +3,7 @@ import "./Page1.css";
 import Dashboard from './Dashboard';
 import Page2 from './Page2';
 
-export default function Page1() {
+export default function Page1({pinToDashboard}) {
 
 const [appState,changeState] = useState({
     objects: [{ id: 1, name: "Item1", status: "", toggled: false },
@@ -15,21 +15,21 @@ const [appState,changeState] = useState({
 
 
 
-function toggleActive(index){
+function toggleActive(item){
     let arrayCopy = [...appState.objects];
 
-    arrayCopy[index].toggled
-      ? (arrayCopy[index].toggled = false)
-      : (arrayCopy[index].toggled = true)
+    arrayCopy[item].toggled
+      ? (arrayCopy[item].toggled = false)
+      : (arrayCopy[item].toggled = true)
 
 
     changeState({ ...appState, objects: arrayCopy })
   
 
-    console.log(appState.objects[index].name);
+    console.log(appState.objects[item].name);
     console.log(arrayCopy.length);
 
-    const myArray = [appState.objects[index].name] ;
+    const myArray = [appState.objects[item].name] ;
     
     <Dashboard arr = {myArray} />
 
@@ -38,8 +38,8 @@ console.log(myArray);
 }
 
 
-function toggleActiveStyles(index){
-    if (appState.objects[index].toggled){
+function toggleActiveStyles(item){
+    if (appState.objects[item].toggled){
         return "box active" ;
         
     } else{
@@ -48,12 +48,12 @@ function toggleActiveStyles(index){
 }
 
 
-function toggleActiveStatus(index){
-    if (appState.objects[index].toggled){
-        return appState.objects[index].status='Pinned' ;
+function toggleActiveStatus(item){
+    if (appState.objects[item].toggled){
+        return appState.objects[item].status='Pinned' ;
         
     } else{
-        return appState.objects[index].status="";
+        return appState.objects[item].status="";
     } 
 }
 
@@ -67,9 +67,9 @@ function toggleActiveStatus(index){
 
          
 
-                {appState.objects.map((element, index) => (
-                    <div key={index} className={`${toggleActiveStatus(index)} ${toggleActiveStyles(index)}`}
-                    onClick={() => toggleActive(index)} ><p>{element.name}</p><p>{element.status}</p></div>
+                {appState.objects.map((element, item) => (
+                    <div key={item} className={`${toggleActiveStatus(item)} ${toggleActiveStyles(item)}`}
+                    onClick={() => {toggleActive(item); pinToDashboard(item)}} ><p>{element.name}</p><p>{element.status}</p></div>
                 ))}
 
 

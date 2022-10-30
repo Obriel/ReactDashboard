@@ -18,17 +18,12 @@ export default function NavbarComp() {
   const [dashboard, setDashboard] = useState([]);
   const [page, setPage] = useState('items');
 
-  const [items] = useState([
-    { id: 1, name: "Item1", status: "", toggled: false },
-    { id: 2, name: "Item2", status: "", toggled: false },
-    { id: 3, name: "Item3", status: "", toggled: false },
-    { id: 4, name: "Item4", status: "", toggled: false }
-  ]);
-
 
 
 const pinToDashboard = (item) => {
+
   setDashboard([...dashboard, { ...item }]);
+
 };
 
 
@@ -37,6 +32,7 @@ const unpinFromDashboard = (itemToRemove) => {
     dashboard.filter((item) => item !== itemToRemove)
     );
 };
+
 
 
     
@@ -56,21 +52,12 @@ const unpinFromDashboard = (itemToRemove) => {
             </div>
             <div>
             <Routes>
-            <Route path="/page1" element={<Page1/>} />
-            <Route path="/page2" element={<Page2/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/page1" element={<Page1 pinToDashboard = {pinToDashboard}/>} />
+            <Route path="/page2" element={<Page2 pinToDashboard = {pinToDashboard} unpinFromDashboard = {unpinFromDashboard}/>} />
+            <Route path="/dashboard" element={<Dashboard dashboard={dashboard} unpinFromDashboard = {unpinFromDashboard}/>} />
         </Routes>
             </div>
             </Router>
-
-<div className="Page2">
-
-<h1>Items</h1>
-{items.map((item, index) =>(
-  <div key={index} className="box active" onClick={() => pinToDashboard(item)}><p>{item.name}</p><p>{item.status}</p></div>
-))}
-
-</div>
 </>
 
         );
