@@ -33,7 +33,7 @@ const unpinFromDashboard = (itemToRemove) => {
     );
 };
 
-
+// ({dashboard.length})
 
     
         return(
@@ -42,7 +42,7 @@ const unpinFromDashboard = (itemToRemove) => {
             <div>
                 <Navbar bg="dark" variant="dark">
         <Container>
-                <Navbar.Brand as={Link} to={"/dashboard"}>Dashboard ({dashboard.length})</Navbar.Brand>
+                <Navbar.Brand as={Link} to={"/dashboard"}>Dashboard </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to={"/page1"}>Page 1</Nav.Link>
             <Nav.Link as={Link} to={"/page2"}>Page 2</Nav.Link>
@@ -53,7 +53,7 @@ const unpinFromDashboard = (itemToRemove) => {
             <div>
             <Routes>
             <Route path="/page1" element={<Page1 pinToDashboard = {pinToDashboard}/>} />
-            <Route path="/page2" element={<Page2 pinToDashboard = {pinToDashboard} unpinFromDashboard = {unpinFromDashboard}/>} />
+            <Route path="/page2" element={<Page2 pinToDashboard = {pinToDashboard}/>} />
             <Route path="/dashboard" element={<Dashboard dashboard={dashboard} unpinFromDashboard = {unpinFromDashboard}/>} />
         </Routes>
             </div>

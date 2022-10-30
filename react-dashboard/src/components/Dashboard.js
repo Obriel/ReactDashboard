@@ -1,5 +1,4 @@
 import React from 'react'
-import Page1 from './Page1';
 
 
 export default function Dashboard({dashboard, unpinFromDashboard}) {
@@ -13,7 +12,7 @@ export default function Dashboard({dashboard, unpinFromDashboard}) {
 
             <div className="Page2">
 
-                {dashboard.sort((a,b) => a.id > b.id ? 1 : -1)
+                {dashboard.sort((a,b) => a.page.localeCompare(b.page) || a.id - b.id )
                 .map((item, index) => (
                     <div key={index} className="box active" onClick={() => unpinFromDashboard(item)}><p>{item.name}</p><p>{item.page}</p></div>
                 ))}

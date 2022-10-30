@@ -2,9 +2,8 @@ import React, { Component, useState } from 'react'
 import "./Page2.css";
 import Dashboard from './Dashboard';
 
-export default function Page2({ pinToDashboard, unpinFromDashboard }) {
+export default function Page2({ pinToDashboard }) {
 
-  const [toggle, setToggle] = useState(false)
 
   const [items, changeState] = useState([
     { id: 1, name: "item1", page: "Page 2", status: "", toggled: false },

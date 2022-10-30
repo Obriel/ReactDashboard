@@ -1,81 +1,66 @@
-import React, {  Component, useState} from 'react'
+import React, { Component, useState } from 'react'
 import "./Page1.css";
 import Dashboard from './Dashboard';
-import Page2 from './Page2';
 
-export default function Page1({pinToDashboard}) {
-
-const [appState,changeState] = useState({
-    objects: [{ id: 1, name: "Item1", status: "", toggled: false },
-        { id: 2, name: "Item2", status: "", toggled: false },
-        { id: 3, name: "Item3", status: "", toggled: false },
-        { id: 4, name: "Item4", status: "", toggled: false }
-    ]
-});
+export default function Page1({ pinToDashboard }) {
 
 
+  const [items, changeState] = useState([
+    { id: 1, name: "item1", page: "Page 1", status: "", toggled: false },
+    { id: 2, name: "item2", page: "Page 1", status: "", toggled: false },
+    { id: 3, name: "item3", page: "Page 1", status: "", toggled: false },
+    { id: 4, name: "item4", page: "Page 1", status: "", toggled: false }
+  ]);
 
-function toggleActive(item){
-    let arrayCopy = [...appState.objects];
-
-    arrayCopy[item].toggled
-      ? (arrayCopy[item].toggled = false)
-      : (arrayCopy[item].toggled = true)
 
 
-    changeState({ ...appState, objects: arrayCopy })
-  
+  const handleCheck = (index) => {
+    let new_array = items;
+    new_array[index].toggled = !new_array[index].toggled;
+    changeState(new_array);
 
-    console.log(appState.objects[item].name);
-    console.log(arrayCopy.length);
+    console.log(new_array[index].name +" "+ new_array[index].toggled);
+ }
 
-    const myArray = [appState.objects[item].name] ;
+
+
+
+const toggleActiveStyles = (index) => {
+  if (items[index].toggled) {
+    return "box active" ;
     
-    <Dashboard arr = {myArray} />
-
-console.log(myArray);
-    
+} else{
+    return "box inactive";
+}
 }
 
 
-function toggleActiveStyles(item){
-    if (appState.objects[item].toggled){
-        return "box active" ;
+const toggleActiveStatus = (index) => {
+    if (items[index].toggled ){
+        return items[index].status='(Pinned)';
         
     } else{
-        return "box inactive";
-    }
-}
-
-
-function toggleActiveStatus(item){
-    if (appState.objects[item].toggled){
-        return appState.objects[item].status='Pinned' ;
-        
-    } else{
-        return appState.objects[item].status="";
+        return items[index].status="";
     } 
 }
 
 
 
-        return(
-            <div>
-                
-            <div className="Page1">
-                
-
-         
-
-                {appState.objects.map((element, item) => (
-                    <div key={item} className={`${toggleActiveStatus(item)} ${toggleActiveStyles(item)}`}
-                    onClick={() => {toggleActive(item); pinToDashboard(item)}} ><p>{element.name}</p><p>{element.status}</p></div>
-                ))}
+  return (
+    <div>
+      <h1>Page 1</h1>
 
 
+      <div className="Page1">
 
-            </div>
-            </div>
-        );
-    
+        {items.map((item, index) => (
+          <div key={index} className={toggleActiveStyles(index)}
+          onClick={() => {handleCheck(index); pinToDashboard(item); toggleActiveStatus(index)}}><p>{item.name}</p><p>{item.status}</p></div>
+        ))}
+
+      </div>
+    </div>
+  );
+
+
 }
